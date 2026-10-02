@@ -1,0 +1,74 @@
+<!DOCTYPE html><html lang="uz"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>6-sinf Tarix</title>
+<style>
+:root{--bg:#f6f1e7;--c:#fff;--t:#2b2118;--p:#7a3e12;--a:#c9962b;--ok:#2e7d32;--no:#c62828;--b:#e2d6bf}
+@media(prefers-color-scheme:dark){:root{--bg:#1c1712;--c:#2a231b;--t:#f0e6d4;--p:#e0a45c;--a:#c9962b;--b:#4a3d2c}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--t);font:17px/1.5 system-ui,sans-serif;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+header{background:var(--p);color:#fff;padding:14px 16px;font-weight:700;font-size:19px;display:flex;gap:10px;align-items:center}
+header button{background:none;border:0;color:#fff;font-size:22px}
+main{max-width:720px;margin:auto;padding:14px}
+.card{background:var(--c);border:1px solid var(--b);border-radius:14px;padding:14px;margin:10px 0}
+button.b{background:var(--p);color:#fff;border:0;border-radius:12px;padding:13px 18px;font-size:17px;width:100%;margin:6px 0}
+button.b.g{background:var(--c);color:var(--p);border:2px solid var(--p)}
+button.b:disabled{opacity:.4}
+.opt{display:block;width:100%;text-align:left;background:var(--c);color:var(--t);border:2px solid var(--b);border-radius:12px;padding:12px;margin:7px 0;font-size:17px}
+.opt.sel{border-color:var(--a);background:rgba(201,150,43,.18)}
+.ok{border-color:var(--ok)!important;background:rgba(46,125,50,.18)!important}.no{border-color:var(--no)!important;background:rgba(198,40,40,.15)!important}
+input[type=text],select{width:100%;padding:12px;font-size:17px;border-radius:10px;border:2px solid var(--b);background:var(--c);color:var(--t)}
+.tag{font-size:14px;color:var(--p);font-weight:700}.bar{height:6px;background:var(--b);border-radius:3px;margin:8px 0}.bar i{display:block;height:100%;background:var(--a);border-radius:3px}
+.big{font-size:44px;text-align:center;font-weight:800;color:var(--p)}
+.tabs{display:flex;gap:8px}.tabs button{flex:1}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:8px 0}th,td{border:1px solid var(--b);padding:6px;text-align:left}th{background:rgba(201,150,43,.25)}h2{font-size:19px;color:var(--p)}</style></head><body>
+<header><button id="back" hidden onclick="go()">←</button><span id="ttl">6-sinf Tarix</span></header>
+<main id="app"></main>
+<script src="content.js"></script>
+<script>
+const T=window.CONTENT.topics,$=s=>document.getElementById(s),app=$('app');
+const sh=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+const E=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const norm=s=>s.toLowerCase().replace(/[ʻʼ`´’‘']/g,"'").replace(/\s+/g,' ').trim();
+const LBL={single:"🔵 Yagona javobli",multi:"🔵 Ko‘p javobli",match:"🟡 Moslashtirish",order:"🟠 Tartiblash",fill:"🟣 Bo‘sh joyni to‘ldirish",tf:"⚪ To‘g‘ri/Noto‘g‘ri"};
+LBL.single="🔵 Yagona javobli";
+let S={};
+function head(t,back){$('ttl').textContent=t;$('back').hidden=!back}
+function go(){S={};home()}
+function home(){head("6-sinf Tarix",0);app.innerHTML=`<div class="card"><h2>📜 Tarix – 6-sinf</h2><p>Mavzu qo‘llanmasi va testlar.</p></div>
+<button class="b" onclick="guideList()">📖 Mavzu qo‘llanmasi</button><button class="b" onclick="testSetup()">📝 Testlar</button>`}
+function guideList(){head("Mavzu qo‘llanmasi",1);app.innerHTML=T.map((t,i)=>`<button class="opt" onclick="guide(${i})">${i+1}. ${E(t.title)}</button>`).join('')}
+function guide(i){head(T[i].title,1);app.innerHTML=`<div class="card">${T[i].guide}</div><button class="b g" onclick="guideList()">← Mavzular</button>`;scrollTo(0,0)}
+function testSetup(){head("Test tuzish",1);S.sel=S.sel||[];S.n=S.n||10;
+ app.innerHTML=`<p class="tag">Mavzularni tanlang (5 tagacha)</p>`+T.map((t,i)=>`<button class="opt ${S.sel.includes(i)?'sel':''}" onclick="tog(${i})">${S.sel.includes(i)?'☑':'☐'} ${E(t.title)} <small>(${t.questions.length})</small></button>`).join('')+
+ `<p class="tag">Savollar soni</p><div class="tabs">${[10,20,30,0].map(n=>`<button class="opt ${S.n==n?'sel':''}" onclick="S.n=${n};testSetup()">${n||'Hammasi'}</button>`).join('')}</div>
+ <button class="b" ${S.sel.length?'':'disabled'} onclick="start()">Boshlash ▶</button>`}
+function tog(i){const k=S.sel.indexOf(i);if(k>=0)S.sel.splice(k,1);else if(S.sel.length<5)S.sel.push(i);else alert("Eng ko‘pi bilan 5 ta mavzu");testSetup()}
+function start(){let q=[];S.sel.forEach(i=>T[i].questions.forEach(x=>q.push(x)));q=sh(q);if(S.n)q=q.slice(0,S.n);S.q=q;S.i=0;S.score=0;S.wrong=[];show()}
+function show(){const q=S.q[S.i];S.done=false;S.a=null;head(`Savol ${S.i+1}/${S.q.length}`,1);
+ let h=`<div class="bar"><i style="width:${S.i/S.q.length*100}%"></i></div><div class="card"><div class="tag">${LBL[q.type]}</div><p>${E(q.q).replace('___','<b>_____</b>')}</p><div id="in">`;
+ if(q.type=='single'||q.type=='multi'){S.opts=sh(q.options.map((o,i)=>i));S.pick=[];h+=S.opts.map(i=>`<button class="opt" id="o${i}" onclick="pick(${i})">${E(q.options[i])}</button>`).join('')}
+ if(q.type=='tf')h+=`<button class="opt" id="o1" onclick="tfa(true)">To‘g‘ri</button><button class="opt" id="o0" onclick="tfa(false)">Noto‘g‘ri</button>`;
+ if(q.type=='fill')h+=`<input type="text" id="f" autocomplete="off" placeholder="Javobni yozing">`;
+ if(q.type=='match'){const r=sh(q.pairs.map(p=>p[1]));h+=q.pairs.map((p,i)=>`<p style="margin:10px 0 4px"><b>${E(p[0])}</b></p><select id="m${i}"><option value="">— tanlang —</option>${r.map(x=>`<option>${E(x)}</option>`).join('')}</select>`).join('')}
+ if(q.type=='order'){S.pool=sh(q.items);S.seq=[];h+=`<div id="ord"></div>`}
+ h+=`</div></div><div id="fb"></div><button class="b" id="chk" onclick="check()">Tekshirish</button>`;app.innerHTML=h;if(q.type=='order')ordR();scrollTo(0,0)}
+function pick(i){if(S.done)return;const q=S.q[S.i];if(q.type=='single')S.pick=[i];else{const k=S.pick.indexOf(i);k>=0?S.pick.splice(k,1):S.pick.push(i)}
+ S.opts.forEach(j=>$('o'+j).classList.toggle('sel',S.pick.includes(j)))}
+function tfa(v){if(S.done)return;S.tf=v;$('o1').classList.toggle('sel',v);$('o0').classList.toggle('sel',!v)}
+function ordR(){$('ord').innerHTML=`<p class="tag">Tanlangan tartib (olib tashlash uchun bosing):</p>`+S.seq.map((x,i)=>`<button class="opt sel" onclick="S.done||(S.pool.push(S.seq.splice(${i},1)[0]),ordR())">${i+1}. ${E(x)}</button>`).join('')+`<p class="tag">Variantlar:</p>`+S.pool.map((x,i)=>`<button class="opt" onclick="S.done||(S.seq.push(S.pool.splice(${i},1)[0]),ordR())">${E(x)}</button>`).join('')}
+function check(){if(S.done){S.i++;return S.i<S.q.length?show():result()}
+ const q=S.q[S.i];let ok=false,ans='';
+ if(q.type=='single'){ok=S.pick[0]===q.answer;ans=q.options[q.answer];S.opts.forEach(j=>$('o'+j).classList.add(j==q.answer?'ok':(S.pick.includes(j)?'no':'')))}
+ if(q.type=='multi'){const a=[...q.answer].sort().join(),p=[...S.pick].sort().join();ok=a==p;ans=q.answer.map(i=>q.options[i]).join(', ');S.opts.forEach(j=>{const c=$('o'+j).classList;if(q.answer.includes(j))c.add('ok');else if(S.pick.includes(j))c.add('no')})}
+ if(q.type=='tf'){ok=S.tf===q.answer;ans=q.answer?'To‘g‘ri':'Noto‘g‘ri';$('o'+(q.answer?1:0)).classList.add('ok');if(!ok&&S.tf!==undefined)$('o'+(S.tf?1:0)).classList.add('no')}
+ if(q.type=='fill'){const v=norm($('f').value);ok=q.answer.some(a=>norm(a)==v);ans=q.answer[0];$('f').classList.add(ok?'ok':'no')}
+ if(q.type=='match'){ok=true;q.pairs.forEach((p,i)=>{const s=$('m'+i),g=s.value==p[1];if(!g)ok=false;s.classList.add(g?'ok':'no')});ans=q.pairs.map(p=>p[0]+' – '+p[1]).join('; ')}
+ if(q.type=='order'){ok=S.seq.length==q.items.length&&S.seq.every((x,i)=>x==q.items[i]);ans=q.items.map((x,i)=>(i+1)+'. '+x).join('; ')}
+ S.done=true;S.tf=undefined;if(ok)S.score++;else S.wrong.push({q:q.q,ans});
+ $('fb').innerHTML=`<div class="card ${ok?'ok':'no'}"><b>${ok?'✅ To‘g‘ri!':'❌ Noto‘g‘ri'}</b>${ok?'':`<br>To‘g‘ri javob: ${E(ans)}`}</div>`;
+ $('chk').textContent=S.i+1<S.q.length?'Keyingisi ▶':'Natijani ko‘rish'}
+function result(){head("Natija",1);const p=Math.round(S.score/S.q.length*100);
+ app.innerHTML=`<div class="card"><div class="big">${p}%</div><p style="text-align:center">${S.score} / ${S.q.length} to‘g‘ri</p></div>`+
+ (S.wrong.length?`<p class="tag">Xatolar:</p>`+S.wrong.map(w=>`<div class="card"><b>${E(w.q)}</b><br><span style="color:var(--ok)">${E(w.ans)}</span></div>`).join(''):'<div class="card">🎉 Hammasi to‘g‘ri!</div>')+
+ `<button class="b" onclick="start()">🔁 Qayta (aralash)</button><button class="b g" onclick="testSetup()">Mavzularni o‘zgartirish</button><button class="b g" onclick="go()">🏠 Bosh sahifa</button>`}
+home();
+</script></body></html>
