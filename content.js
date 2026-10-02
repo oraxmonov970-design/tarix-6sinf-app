@@ -1,0 +1,76 @@
+const s=(q,o,a)=>({type:"single",q,options:o,answer:a});
+const f=(q,...a)=>({type:"fill",q,answer:a});
+const tf=(q,a)=>({type:"tf",q,answer:a});
+const ABCD=["arxeologlar","etnograflar","antropologlar","lingvistlar"];
+window.CONTENT={topics:[{id:1,title:"1-§. Qadimgi tarix ildizlari",
+guide:`<h2>1. Qadimgi tarix</h2><p><b>Qadimgi dunyo tarixi</b> — Yer yuzida odam paydo bo‘lganidan boshlab milodiy <b>476-yilda G‘arbiy Rim imperiyasi qulaguniga</b> qadar bo‘lgan voqealarni o‘rganadi.</p><p><b>Ibtidoiy jamoa tuzumi</b> — barcha xalqlar tarixining boshlang‘ich bosqichi. Insoniyat rivojidagi dastlabki bosqich — kishilarning alohida guruhlarga birlashuvi. Keyinchalik ular urug‘ jamoalariga bo‘lingan.</p>
+<h2>2. Qadimgi tarixni o‘rganuvchi olimlar</h2><table><tr><th>Olim</th><th>Nimani o‘rganadi?</th></tr><tr><td>Arxeolog</td><td>Qadimgi manzilgohlarda qazishma olib boradi</td></tr><tr><td>Antropolog</td><td>Skelet va bosh chanog‘ini o‘rganib, tashqi qiyofani tiklaydi</td></tr><tr><td>Etnograf</td><td>Urf-odat, xo‘jalik va madaniy an’analarni o‘rganadi</td></tr></table><p><i>Yodlash: Arxeolog — qazishma; Antropolog — suyak; Etnograf — urf-odat.</i></p>
+<h2>3. Tarixiy manbalar</h2><p><b>Moddiy (ashyoviy) manbalar</b> — qadimda inson qo‘li bilan yaratilgan narsalar: mehnat qurollari, sopol idishlar, qurol-aslahalar, zeb-ziynat buyumlari.</p><p><b>Yozma manbalar</b>: “Avesto” — O‘rta Osiyo bo‘yicha eng qadimgi yozma manba. Behistun qoyasi yozuvlari — Eronda joylashgan, Doro I buyrug‘i bilan yozilgan.</p><p><i>Moddiy → buyum; Yozma → yozuv/asar.</i></p>
+<h2>4. Qadimgi tarixchilar</h2><table><tr><th>Tarixchi</th><th>Millati</th><th>Davri</th><th>Asari</th></tr><tr><td>Gerodot</td><td>yunon</td><td>mil.avv. V asr</td><td>“Tarix”</td></tr><tr><td>Strabon</td><td>yunon</td><td>mil.avv. I asr oxiri</td><td>“Geografiya”</td></tr><tr><td>Arrian</td><td>yunon</td><td>milodiy II asr</td><td>“Aleksandrning harbiy yurishlari”</td></tr></table>
+<h2>5. Matriarxat va patriarxat</h2><p><b>Matriarxat</b> — dastlabki urug‘ jamoalari ona (ayol) atrofida birlashgan davr.</p><p><b>Patriarxat</b> — yetakchilik erkak kishiga o‘tgan davr. Sabab: mehnat qurollari va xo‘jalik yuritish shakllarining takomillashuvi.</p>
+<h2>6. Tosh davri</h2><p>Eng qadimgi odamlar dastlabki mehnat qurollarini toshdan yasagan, shu sababli tarixning boshlanishi <b>tosh davri</b> deyiladi. 4 bosqich: <b>Paleolit → Mezolit → Neolit → Eneolit</b>.</p><table><tr><th>Davr</th><th>Ma’nosi</th><th>Kelib chiqishi</th></tr><tr><td>Paleolit</td><td>qadimgi tosh</td><td>yunoncha paleos + litos</td></tr><tr><td>Mezolit</td><td>o‘rta tosh</td><td>yunoncha mezos + litos</td></tr><tr><td>Neolit</td><td>yangi tosh</td><td>yunoncha neos + litos</td></tr><tr><td>Eneolit</td><td>mis-tosh</td><td>lotincha eneus + yunoncha litos</td></tr></table><p>Eneolit — lotincha va yunoncha so‘zlarning qo‘shilmasi.</p>
+<h2>7. Paleolitning bo‘linishi</h2><p>Paleolit 3 davrga ajratiladi: <b>ilk → o‘rta → so‘nggi</b> paleolit.</p>`,
+questions:[
+s("Qadimgi dunyo tarixi qaysi davrni o‘z ichiga oladi?",["Iso payg‘ambar tug‘ilganidan to milodiy 476-yilda G‘arbiy Rim imperiyasi qulaguniga qadar","Eng qadimgi shaharlar, yozuv, davlatlar tashkil topganidan to milodiy 476-yilgacha","Insonlarning ibtidoiy guruhlarga birlashuvidan to 395-yilda Rim imperiyasi ikkiga bo‘linguniga qadar","Yer yuzida odam paydo bo‘lganidan to milodiy 476-yilda G‘arbiy Rim imperiyasi qulaguniga qadar"],3),
+s("Yer yuzida odam paydo bo‘lganidan to milodiy 476-yilda G‘arbiy Rim imperiyasi qulaguniga qadar kechgan voqealar tarix fanida qanday ataladi?",["antik davr","ibtidoiy davr","qadimgi dunyo tarixi","ilk o‘rta asrlar tarixi"],2),
+s("Qaysi olimlar qadim zamonlarda odamlar yashagan manzilgohlarda qazishma ishlarini amalga oshiradilar?",ABCD.slice(0,4).map((x,i)=>["lingvistlar","etnograflar","antropologlar","arxeologlar"][i]),3),
+s("Qaysi olimlar qadimgi odamlarning skelet va bosh chanog‘ini tekshirib, tashqi ko‘rinishini tiklaydilar?",["lingvistlar","etnograflar","antropologlar","arxeologlar"],2),
+s("Qaysi olimlar qadimgi odamlarning udumlari, xo‘jalik va madaniy an’analarini saqlab qolgan hozirgi qabilalar va xalqlarni o‘rganadilar?",["lingvistlar","etnograflar","antropologlar","arxeologlar"],1),
+s("Moddiy manbalarga nimalar kiradi?",["mehnat qurollari, sopol idishlar, qurol-aslahalar, zeb-ziynat buyumlari","Behistun yozuvlari, Gerodot, Strabon, Sim Syan asarlari","taqinchoqlar, “Avesto” kitobi","turli yilnomalar, qonunlar majmuyi, biografiyalar"],0),
+s("Yozma manbalarga nimalar kiradi?",["mehnat qurollari, sopol idishlar, qurol-aslahalar, zeb-ziynat buyumlari","Behistun yozuvlari, Gerodot, Strabon, Sim Syan asarlari","taqinchoqlar, “Avesto” kitobi","turli yilnomalar, turli taqinchoqlar, zargarlik buyumlari"],1),
+s("Moddiy manbalarga nimalar kiradi? (2-variant)",["tarixchilar tomonidan yozib qoldirilgan hamma asarlar","Behistun yozuvlari, Gerodot, Strabon, Sim Syan asarlari","qadimda inson qo‘li bilan yaratilgan barcha narsalar","turli yilnomalar, qonunlar majmuyi, biografiyalar"],2),
+s("O‘rta Osiyo bo‘yicha eng qadimgi yozma manbani aniqlang.",["Behistun yozuvlari","“Avesto” kitobi","Gerodotning “Tarix” asari","Sim Syanning “Tarixiy yilnomalar” asari"],1),
+s("Behistun qoyasi yozuvlari qayerda joylashgan?",["Iroqda","Afg‘onistonda","Turkiyada","Eronda"],3),
+s("Jahondagi barcha xalqlarning tarixi … tuzumidan boshlangan.",["ibtidoiy jamoa","patriarxal jamoa","urug‘chilik jamoasi","harbiy demokratiya"],0),
+s("Insoniyat rivojidagi birinchi bosqich kishilarning … birlashuvi edi.",["qabilalar ittifoqiga","alohida guruhlarga","qarindoshlardan tarkib topgan urug‘larga","qabilaga"],1),
+s("Eng qadimgi odamlarning dastlabki jamoasi bu – … .",["qabilalar ittifoqi","alohida guruhlar","qarindoshlardan tarkib topgan urug‘","qabila"],1),
+s("Ibtidoiy jamoalar asta-sekin … bo‘lina boshladi.",["urug‘ jamoalariga","qabilaga","qabilalar ittifoqiga","davlatga"],0),
+s("Qarindoshlardan tarkib topgan jamoa nima deb ataladi?",["ibtidoiy to‘da","urug‘","qabila","qabilalar ittifoqi"],1),
+s("Qaysi tarixiy shaxs “Tarix” nomli asar yozgan?",["Gerodot","Strabon","Arrian","Kvint Kursiy Ruf"],0),
+s("“Aleksandrning harbiy yurishlari” asari muallifini aniqlang.",["Gerodot","Strabon","Arrian","Kvint Kursiy Ruf"],2),
+s("Qaysi tarixiy shaxs “Geografiya” nomli asar yozgan?",["Gerodot","Strabon","Arrian","Kvint Kursiy Ruf"],1),
+s("Yunon tarixchisi Gerodot “Tarix” kitobini nechanchi asrda yozgan?",["mil. avv. V asrda","milodiy II asrda","mil. avv. I asrda","mil. avv. II asrda"],0),
+s("Strabon “Geografiya” asarini qachon yozgan?",["mil. avv. I asr oxirlarida","mil. avv. II asrda","milodiy I asr oxirlarida","mil. avv. V asrda"],0),
+s("Arrian “Aleksandrning harbiy yurishlari” asarini nechanchi asrda yozgan?",["mil. avv. I asr oxirlarida","mil. avv. II asrda","milodiy I asr oxirlarida","milodiy II asrda"],3),
+s("Gerodot qayerlik tarixchi bo‘lgan?",["makedon","yunon","rim","eron"],1),
+s("Strabon qayerlik bo‘lgan?",["yunon","rim","makedon","eron"],0),
+s("Arrian qaysi millatga mansub tarixchi bo‘lgan?",["makedon","yunon","rim","eron"],1),
+s("Dastlabki urug‘ jamoalari ona atrofida jipslashgan. Bu bosqich nima deb atalgan?",["patriarxat","matriarxat","mezolit","eneolit"],1),
+s("Qaysi sababga ko‘ra urug‘ jamoalarida yetakchilik erkak kishiga o‘ta boshlagan?",["iqlim o‘zgarishi va tez yurar hayvonlar paydo bo‘lishi natijasida ov qiyinlashgani","mehnat qurollari va xo‘jalik yuritish shakllari takomillashgani","eng qadimgi urug‘chilik yakunlangani","hayvonlarni ovlash imkoniyati paydo bo‘lgani"],1),
+s("Yetakchilik mavqeyi erkak kishiga o‘tgan davr qanday ataladi?",["patriarxat","matriarxat","mezolit","eneolit"],0),
+s("Patriarxat davr deganda qanday davr nazarda tutiladi?",["urug‘ jamoalari ona atrofida birlashgan","hayvonlarni ovlash bilan erkaklar shug‘ullangan","urug‘dosh jamoalarni erkak kishi boshqarib turgan","erkak va ayol teng mavqega ega bo‘lgan"],2),
+s("Nima uchun arxeologlar insoniyat tarixining boshlanishini “tosh davri” deb atashadi?",["dastlabki zeb-ziynat buyumlari toshdan yasalgani uchun","dastlabki ov qurollari toshdan yasalgani uchun","dastlabki mehnat qurollari toshdan yasalgani uchun","dastlabki uylar toshdan qurilgani uchun"],2),
+s("Tosh davri nechta bosqichga bo‘linadi?",["3 ta","4 ta","5 ta","6 ta"],1),
+s("Tosh davri bosqichlarining to‘g‘ri ketma-ketligini toping.",["paleolit, mezolit, eneolit, neolit","mezolit, paleolit, neolit, eneolit","paleolit, neolit, eneolit, mezolit","paleolit, mezolit, neolit, eneolit"],3),
+s("Paleolit bu – … .",["qadimgi tosh davri","o‘rta tosh davri","yangi tosh davri","mis-tosh davri"],0),
+s("Mezolit bu – … .",["qadimgi tosh davri","o‘rta tosh davri","yangi tosh davri","mis-tosh davri"],1),
+s("Neolit bu – … .",["qadimgi tosh davri","o‘rta tosh davri","yangi tosh davri","mis-tosh davri"],2),
+s("Eneolit bu – … .",["qadimgi tosh davri","o‘rta tosh davri","yangi tosh davri","mis-tosh davri"],3),
+s("Paleolit atamasi qaysi so‘zlardan kelib chiqqan?",["lotincha “paleos” – qadimgi va “litos” – tosh","yunoncha “paleos” – qadimgi va “litos” – ta’limot","yunoncha “paleos” – qadimgi va “litos” – tosh","lotincha “paleos” – qadimgi va “litos” – ta’limot"],2),
+s("Mezolit atamasi qaysi so‘zlardan kelib chiqqan?",["yunoncha “mezos” – o‘rta va “litos” – tosh","yunoncha “mezos” – qadimgi va “litos” – tosh","yunoncha “mezos” – yangi va “litos” – tosh","lotincha “mezos” – o‘rta va “litos” – tosh"],0),
+s("Neolit atamasi qaysi so‘zlardan kelib chiqqan?",["yunoncha “neos” – yangi va “litos” – tosh","lotincha “neos” – yangi va “litos” – tosh","yunoncha “neos” – yangi va lotincha “litos” – tosh","yunoncha “neos” – yangi va “litos” – ta’limot"],0),
+s("Eneolit atamasi qaysi so‘zlardan kelib chiqqan?",["yunoncha “eneus” – mis va “litos” – tosh","yunoncha “eneus” – mis va lotincha “litos” – tosh","lotincha “eneus” – mis va yunoncha “litos” – tosh","lotincha “eneus” – mis va “litos” – tosh"],2),
+s("Tosh davri bosqichlari nomlaridan qaysi biri lotincha va yunoncha so‘zlar qo‘shilmasidan iborat?",["paleolit","mezolit","neolit","eneolit"],3),
+s("Qadimgi tosh davri (paleolit) nechta davrga ajratib o‘rganiladi?",["3","4","5","2"],0),
+s("Paleolit qanday davrlarga ajratib o‘rganiladi?",["ilk, o‘rta, so‘nggi","ilk, matriarxat, patriarxat","ilk, qadimgi, o‘rta, yangi, so‘nggi","qadimgi, o‘rta, yangi"],0),
+{type:"multi",q:"To‘g‘ri ma’lumotlarni aniqlang.",options:["“Aleksandrning harbiy yurishlari” asari Arrian tomonidan yozilgan bo‘lib, Makedoniyalik Aleksandrning O‘rta Osiyoga harbiy yurishlari haqida hikoya qiladi","Milodiy I asr oxirlarida yunon tarixchisi va geografi Strabon “Geografiya” nomli asar yozgan","“Tik yuruvchi odamlar” chaqmoqtosh orqali olov hosil qilishni o‘rganib olishgan","Buyuk muzlik davri ilk paleolitning oxirida boshlanib mezolit davri boshlanishi bilan poyoniga yetgan","Toshkent vohasida mezolit davriga oid qo‘shilish manzilgohi joylashgan"],answer:[0,1,2,4]},
+// Qoʻshimcha formatlar (matndan tuzilgan)
+{type:"multi",q:"Moddiy manbalarni belgilang.",options:["mehnat qurollari","sopol idishlar","“Avesto” kitobi","Behistun yozuvlari","zeb-ziynat buyumlari"],answer:[0,1,4]},
+{type:"multi",q:"Yunon tarixchilarini belgilang.",options:["Gerodot","Strabon","Arrian","Doro I"],answer:[0,1,2]},
+{type:"match",q:"Olimni u o‘rganadigan soha bilan moslang.",pairs:[["Arxeolog","Qazishma ishlari"],["Antropolog","Skelet va bosh chanoq"],["Etnograf","Urf-odat va an’analar"]]},
+{type:"match",q:"Tarixchini asari bilan moslang.",pairs:[["Gerodot","“Tarix”"],["Strabon","“Geografiya”"],["Arrian","“Aleksandrning harbiy yurishlari”"]]},
+{type:"match",q:"Davrni ma’nosi bilan moslang.",pairs:[["Paleolit","qadimgi tosh"],["Mezolit","o‘rta tosh"],["Neolit","yangi tosh"],["Eneolit","mis-tosh"]]},
+{type:"order",q:"Tosh davri bosqichlarini ketma-ket joylashtiring.",items:["Paleolit","Mezolit","Neolit","Eneolit"]},
+{type:"order",q:"Paleolit davrlarini ketma-ket joylashtiring.",items:["Ilk paleolit","O‘rta paleolit","So‘nggi paleolit"]},
+{type:"order",q:"Tarixchilarni yashagan davri bo‘yicha qadimdan keyingisiga joylashtiring.",items:["Gerodot","Strabon","Arrian"]},
+f("Qadimgi dunyo tarixi milodiy ___-yilda G‘arbiy Rim imperiyasi qulashi bilan tugaydi.","476"),
+f("O‘rta Osiyo bo‘yicha eng qadimgi yozma manba “___” kitobidir.","Avesto"),
+f("Ona atrofida birlashgan davr ___ deyiladi.","matriarxat"),
+f("Qadimgi tosh davri ___ deb ataladi.","paleolit"),
+f("Qazishma olib boradigan olim — ___.","arxeolog"),
+tf("Behistun qoyasi yozuvlari Eronda joylashgan.",true),
+tf("Gerodot rim tarixchisi bo‘lgan.",false),
+tf("Eneolit — mis-tosh davri.",true),
+tf("Patriarxat davrida yetakchilik ayol kishida bo‘lgan.",false),
+tf("Strabon “Aleksandrning harbiy yurishlari” asarini yozgan.",false)
+]}]};
